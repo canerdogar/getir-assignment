@@ -167,7 +167,7 @@ describe("test response body validations", () => {
 describe("test queries", () => {
 
     function clearDB() {
-        for (var i in mongoose.connection.collections) {
+        for (const i in mongoose.connection.collections) {
           mongoose.connection.collections[i].remove(function() {
               console.log("removed");
           });
@@ -261,4 +261,4 @@ describe("test queries", () => {
 
     });
 
-})
+});

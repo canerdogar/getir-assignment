@@ -18,7 +18,7 @@ https://pacific-stream-74609.herokuapp.com/
 
 App is expecting requests described in the assignment document from "/records" endpoint.
 
-##Notes
+## Notes
 My intention was to change a couple of things about the app but I didn't to satisfy the requirements.
 1. I would have preferred writing a get endpoint which expects query parameters instead of a post request
 with a request payload because this endpoint is not changing resources on the service.
