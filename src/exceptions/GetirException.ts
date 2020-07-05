@@ -1,5 +1,6 @@
 import { ErrorMessages } from "../util/errorMessages";
 
+// Custom exception
 export class GetirException extends Error {
 
     private errorMessage: ErrorMessages;

@@ -1,3 +1,4 @@
+// error messages which will be sent on msg field.
 export enum ErrorMessages {
     MIN_NOT_NUMERIC = "MIN_NOT_NUMERIC",
     MAX_NOT_NUMERIC = "MAX_NOT_NUMERIC",
