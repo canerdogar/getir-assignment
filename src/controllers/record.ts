@@ -28,7 +28,7 @@ export const getRecords = async (req: Request, res: Response, next: NextFunction
         .if(body("endDate").exists().custom(isValidDate))
         .custom(dateComparison).withMessage(ErrorMessages.STARTDATE_NOT_BEFORE_ENDDATE).run(req);
     
-    await body("minCount").isNumeric().withMessage(ErrorMessages.MIN_NOT_NUMERIC.run(req);
+    await body("minCount").isNumeric().withMessage(ErrorMessages.MIN_NOT_NUMERIC).run(req);
     await body("maxCount").isNumeric().withMessage(ErrorMessages.MAX_NOT_NUMERIC).run(req);
 
     await body("maxCount")
