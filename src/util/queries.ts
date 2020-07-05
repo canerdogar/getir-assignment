@@ -16,10 +16,12 @@ export function getRecordsQuery(startDate: string, endDate: string, minCount: nu
             }
         }, {
             "$project": {
+                "key": "$key",
+                "createdAt": "$createdAt",
                 "totalCount": {
                     "$sum": "$counts"
                 },
-                "key": "$key"
+                "_id": 0
             }
         }, {
             "$match": {

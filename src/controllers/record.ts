@@ -5,6 +5,8 @@ import { dateComparison, isValidDate, maxGteMin } from "../util/validators";
 import { Error } from "mongoose";
 import { body, check, validationResult } from "express-validator";
 import { ErrorMessages } from "../util/errorMessages"; 
+import { prepareResponse } from "../util/prepareResponse";
+import { GetirException } from "../exceptions/GetirException";
 
 export const getRecords = async (req: Request, res: Response, next: NextFunction) => {
     // validations
@@ -43,12 +45,12 @@ export const getRecords = async (req: Request, res: Response, next: NextFunction
     });
 
     if (!errors.isEmpty()) {
-        return res.send(errors.array());
+        return next(new GetirException(errors.array()[0]));
     }
 
     const { startDate, endDate, minCount, maxCount } = req.body;
     Record.aggregate(getRecordsQuery(startDate, endDate, minCount, maxCount), (err: Error, records: RecordDocument[]) => {
-        if (err) { return next(err); }
-        res.send(records);
+        if (err) { return next(new GetirException(ErrorMessages.DB_EXCEPTION)); }
+        res.json(prepareResponse(records));
     });
 };

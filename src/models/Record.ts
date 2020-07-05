@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
 
-export type RecordDocument = mongoose.Document & {
+export interface RecordJSON {
     key: string;
     createdAt: Date;
     counts: number[];
     value: string;
-};
+}
+
+export type RecordDocument = mongoose.Document & RecordJSON;
 
 const recordSchema = new mongoose.Schema({
     key: String,

@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Response, Request, NextFunction } from "express";
 import compression from "compression";  // compresses requests
 import session from "express-session";
 import bodyParser from "body-parser";
@@ -13,6 +13,7 @@ const MongoStore = mongo(session);
 
 // Controllers (route handlers)
 import * as recordController from "./controllers/record";
+import { prepareResponse } from "./util/prepareResponse";
 
 // Create Express server
 const app = express();
@@ -50,5 +51,8 @@ app.use(lusca.xssProtection(true));
  * Primary app routes.
  */
 app.post("/records", recordController.getRecords);
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    res.json(prepareResponse([], err.message));
+});
 
 export default app;
