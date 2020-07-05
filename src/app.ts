@@ -49,6 +49,6 @@ app.use(lusca.xssProtection(true));
 /**
  * Primary app routes.
  */
-app.get("/records", recordController.getRecords);
+app.post("/records", recordController.getRecords);
 
 export default app;
