@@ -12,7 +12,7 @@ import { MONGODB_URI, SESSION_SECRET } from "./util/secrets";
 const MongoStore = mongo(session);
 
 // Controllers (route handlers)
-
+import * as recordController from "./controllers/record";
 
 // Create Express server
 const app = express();
@@ -49,5 +49,6 @@ app.use(lusca.xssProtection(true));
 /**
  * Primary app routes.
  */
+app.get("/records", recordController.getRecords);
 
 export default app;
