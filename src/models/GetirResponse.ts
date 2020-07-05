@@ -1,5 +1,5 @@
 import { ErrorMessages } from "../util/errorMessages";
-import { RecordDocument } from "./record";
+import { RecordDocument } from "./Record";
 
 export interface GetirResponse {
     code: number;

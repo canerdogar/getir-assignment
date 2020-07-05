@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { Record, RecordDocument } from "../models/record";
+import { Record, RecordDocument } from "../models/Record";
 import { getRecordsQuery } from "../util/queries";
 import { dateComparison, isValidDate, maxGteMin } from "../util/validators";
 import { Error } from "mongoose";
